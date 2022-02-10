@@ -66,8 +66,4 @@ const results = document.getElementById('result');
 results.innerHTML = playRound(playerSelection, computerSelection);
 
 
-console.log('player ' + playerSelection);
-console.log('computer ' + computerSelection);
-
-console.log(playRound(playerSelection, computerSelection));
 
