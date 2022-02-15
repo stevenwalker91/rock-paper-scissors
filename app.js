@@ -7,13 +7,13 @@ function computerPlay() {
     //assign the computer a move type based on which number was returned
     switch (computerMoveInt) {
         case 0:
-            computerMoveChoice = "rock";
+            computerMoveChoice = 'rock';
             break;
         case 1:
-            computerMoveChoice = "paper";
+            computerMoveChoice = 'paper';
             break;
         case 2:
-            computerMoveChoice = "scissors";
+            computerMoveChoice = 'scissors';
             break;
     }
     return computerMoveChoice;
@@ -23,7 +23,6 @@ function computerPlay() {
 function capitaliseFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 
 function playRound(playerSelection, computerSelection) {
     
@@ -45,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+function playGame() {
     let playerSelection;
     let computerSelection;
 
@@ -54,11 +53,8 @@ function game() {
         computerSelection = computerPlay();
 
         console.log(playRound(playerSelection, computerSelection));
-        //below will help to store results in html
-        //const results = document.getElementById('result');
-        //results.innerHTML = playRound(playerSelection, computerSelection);
     }
-    console.log('player score: ' + playerScore + ' computer score: ' + computerScore);
+
     gameResults(playerScore, computerScore);
 }
 
@@ -74,10 +70,9 @@ function gameResults(playerScore, computerScore) {
     } else {
         result  = `Oooh sorry, you lost. The score was Player: ${playerScore} - Computer: ${computerScore}`;
     }
-    console.log(result);
+  
     const results = document.getElementById('result-field');
     results.innerHTML = result;
-
 }
 
 /* all the stuff below is for later on trying to drive stuff via the UI - need to figure out how to let DOM load first
@@ -94,7 +89,7 @@ playerInput.addEventListener('change', (event) => {
 
 let playerScore = 0;
 let computerScore = 0;
-game();
+playGame();
 
 
 
