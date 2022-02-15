@@ -1,6 +1,6 @@
 //function for computer opponent to randomly generate a move
 function computerPlay() {
-    //get a number between 0 and 2 
+  
     let computerMoveInt = Math.floor(Math.random() * 3);
     let computerMoveChoice;
 
@@ -24,36 +24,49 @@ function capitaliseFirstLetter(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function playRound(playerSelection, computerSelection) {
+//checkRoundWinner takes the player and computer selections then checks them to see who is the winner, changes the score and returns a user friendly message summarising who won the round.
+function checkRoundWinner(playerSelection, computerSelection) {
     
-    //first check if it's a draw and handle that
-    if (playerSelection === computerSelection) {
-        return('Shit son, it\'s a draw!');  
-    }
+    let returnString = `You selected ${playerSelection} and the computer selected ${computerSelection}. `
 
     //check each combination of player selections to check if they have won, otherwise return lose
     if (playerSelection === 'rock' && computerSelection === 'scissors'
         || playerSelection === 'paper' && computerSelection === 'rock'
         || playerSelection === 'scissors' && computerSelection === 'paper') {
             playerScore++;
-            return (`You win! ${capitaliseFirstLetter(playerSelection)} beats ${capitaliseFirstLetter(computerSelection)}`);
+            returnString+= 'You win!';
+        }
+        else if (playerSelection === computerSelection) {
+            returnString+= 'It\'s a draw.';
         }
     else {
-        computerScore++;
-        return (`You lose! ${capitaliseFirstLetter(computerSelection)} beats ${capitaliseFirstLetter(playerSelection)}`);
+        computerScore++;;
+        returnString+= 'Sorry, you lost this time.';
     }
+    return returnString;
+}
+
+function playRound(playerSelection, computerSelection) {
+    //get the user selection from the button they selected and call computerPlay which generates the computers move
+    playerSelection = this.textContent.toLowerCase();
+    computerSelection = computerPlay();
+
+
+   let resultText = checkRoundWinner(playerSelection, computerSelection);
+
+    const playerScoreField = document.getElementById('player-score');
+    const computerScoreField = document.getElementById('computer-score');
+    const results = document.getElementById('result-field');
+    
+    results.innerHTML = resultText;
+    
+    playerScoreField.innerText = playerScore;
+    computerScoreField.innerText = computerScore;
+
 }
 
 function playGame() {
-    let playerSelection;
-    let computerSelection;
-
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt('What\'s your move, rock, paper or scissors?').toLowerCase();
-        computerSelection = computerPlay();
-
-        console.log(playRound(playerSelection, computerSelection));
-    }
+    
 
     gameResults(playerScore, computerScore);
 }
@@ -64,32 +77,23 @@ function gameResults(playerScore, computerScore) {
     let result = '';
 
     if (playerScore === computerScore) {
-        result = `It was a draw! Why not try again? The score was Player:${playerScore} - Computer:${computerScore}`;
+        result = `It was a draw! Why not try again? The score was Player: ${playerScore} - Computer: ${computerScore}`;
     } else if (playerScore > computerScore) {
         result  = `You won! Well done! The score was Player: ${playerScore} - Computer: ${computerScore}`;
     } else {
         result  = `Oooh sorry, you lost. The score was Player: ${playerScore} - Computer: ${computerScore}`;
     }
   
-    const results = document.getElementById('result-field');
-    results.innerHTML = result;
+
 }
 
-/* all the stuff below is for later on trying to drive stuff via the UI - need to figure out how to let DOM load first
+const playButtons = document.querySelectorAll('.selection');
 
-let playerInput = document.getElementById("playermove")
-let playerSelection;
-
-playerInput.addEventListener('change', (event) => {
-    playerSelection = playerInput.value;
-    console.log(playerInput.value);
-    
-})
-*/
+playButtons.forEach(button => button.addEventListener ('click', playRound));
 
 let playerScore = 0;
 let computerScore = 0;
-playGame();
+// playGame();
 
 
 
