@@ -34,46 +34,50 @@ function checkRoundWinner(playerSelection, computerSelection) {
         || playerSelection === 'paper' && computerSelection === 'rock'
         || playerSelection === 'scissors' && computerSelection === 'paper') {
             playerScore++;
-            returnString+= 'You win!';
+            returnString+= 'YAAAAASS! You win!';
         }
         else if (playerSelection === computerSelection) {
             returnString+= 'It\'s a draw.';
         }
     else {
         computerScore++;;
-        returnString+= 'Sorry, you lost this time.';
+        returnString+= 'Aww mate, that\'s bollocks you lost this time.';
     }
     return returnString;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
     //get the user selection from the button they selected and call computerPlay which generates the computers move
-    playerSelection = this.textContent.toLowerCase();
-    computerSelection = computerPlay();
+    let playerSelection = this.textContent.toLowerCase();
+    let computerSelection = computerPlay();
 
 
    let resultText = checkRoundWinner(playerSelection, computerSelection);
 
     const playerScoreField = document.getElementById('player-score');
     const computerScoreField = document.getElementById('computer-score');
-    const results = document.getElementById('result-field');
+    const roundResults = document.getElementById('round-result-field');
     
-    results.innerHTML = resultText;
+    roundResults.innerHTML = resultText;
     
     playerScoreField.innerText = playerScore;
     computerScoreField.innerText = computerScore;
 
+    roundCount++;
+    checkGameStatus();
 }
 
-function playGame() {
-    
-
-    gameResults(playerScore, computerScore);
+function checkGameStatus() {
+    if (roundCount === 5) {
+        gameResults(playerScore, computerScore);
+    }
 }
+
 
 function gameResults(playerScore, computerScore) {
-    console.log(playerScore);
-    console.log(computerScore);
+
+    const gameResults = document.getElementById('game-result-field');
+
     let result = '';
 
     if (playerScore === computerScore) {
@@ -83,17 +87,23 @@ function gameResults(playerScore, computerScore) {
     } else {
         result  = `Oooh sorry, you lost. The score was Player: ${playerScore} - Computer: ${computerScore}`;
     }
-  
+
+    //clear down the scores for the next game
+    playButtons.forEach(button => button.setAttribute ('disabled', true));
+    
+    gameResults.innerHTML = result;
 
 }
 
-const playButtons = document.querySelectorAll('.selection');
-
-playButtons.forEach(button => button.addEventListener ('click', playRound));
-
 let playerScore = 0;
 let computerScore = 0;
-// playGame();
+let roundCount = 0;
+
+const playButtons = document.querySelectorAll('.selection');
+playButtons.forEach(button => button.addEventListener ('click', playRound));
+
+
+
 
 
 
