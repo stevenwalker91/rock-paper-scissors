@@ -2,6 +2,8 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    <link rel="stylesheet" href="flip/dist/flip.min.css" />
+    <script src="flip/dist/flip.min.js"></script>
 </head>
 
 <body>
@@ -19,15 +21,19 @@
     <div class="scoreboard">
         <div class="score-container">
             <h3>Your score:</h3>
-            <div id="player-score" class="score">0</div>
+            <div class="tick" id="player-score"data-value="0" data-credits="false">
+                <span data-view="flip"></span>
+            </div>
         </div>
         <div class="score-container">
             <h3>Computer score:</h3>
-            <div id="computer-score" class="score">0</div>
+            <div class="tick" id="computer-score"data-value="0" data-credits="false">
+                <span data-view="flip"></span>
+            </div>
         </div>
     </div>
 
     <h2 id="game-result-field"></h2>
-
+    
     
 </body>

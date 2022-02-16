@@ -34,6 +34,8 @@ function checkRoundWinner(playerSelection, computerSelection) {
         || playerSelection === 'paper' && computerSelection === 'rock'
         || playerSelection === 'scissors' && computerSelection === 'paper') {
             playerScore++;
+            let tick = document.getElementById('player-score');
+            tick.setAttribute('data-value', playerScore);
             returnString+= 'YAAAAASS! You win!';
         }
         else if (playerSelection === computerSelection) {
@@ -42,6 +44,8 @@ function checkRoundWinner(playerSelection, computerSelection) {
     else {
         computerScore++;;
         returnString+= 'Aww mate, that\'s bollocks you lost this time.';
+        let tick = document.getElementById('computer-score');
+        tick.setAttribute('data-value', computerScore);
     }
     return returnString;
 }
@@ -54,14 +58,8 @@ function playRound() {
 
    let resultText = checkRoundWinner(playerSelection, computerSelection);
 
-    const playerScoreField = document.getElementById('player-score');
-    const computerScoreField = document.getElementById('computer-score');
     const roundResults = document.getElementById('round-result-field');
-    
     roundResults.innerHTML = resultText;
-    
-    playerScoreField.innerText = playerScore;
-    computerScoreField.innerText = computerScore;
 
     roundCount++;
     checkGameStatus();

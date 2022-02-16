@@ -37,3 +37,6 @@ button {
     align-items: flex-start;
 }
 
+.tick {
+    font-size: 125px;
+}
