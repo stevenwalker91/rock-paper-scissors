@@ -7,6 +7,14 @@ body {
 button {
     width: 150px;
     height: 110px;
+    border: none;
+    border-radius: 10px;
+    background-color:cadetblue;
+}
+
+button:hover {
+    cursor:pointer;
+    background-color:rgb(98, 184, 187);
 }
 
 .scoreboard {
