@@ -5,28 +5,52 @@ body {
 
 
 button {
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 110px;
 }
 
 .scoreboard {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap:50px;
     flex-wrap: wrap;
+
 }
 
-.score-container {
+.score-container, .round {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.btn-group {
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;   
+    flex-grow: 1;
 }
 
 .tick {
     font-size: 125px;
 }
 
-.round-number {
-    align-items: center;
-    display: flex;
+
+h3 {
+    margin-left: 12px;
 }
+
+@media screen and (max-width: 883px) {
+    .scoreboard {
+      flex-direction: column;
+    }   
+  }
+
+  .bold {
+      font-weight: bold;
+  }
+
+
+  .fa-regular {
+      font-size: 75px;
+  }

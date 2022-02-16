@@ -27,7 +27,7 @@ function capitaliseFirstLetter(string){
 //checkRoundWinner takes the player and computer selections then checks them to see who is the winner, changes the score and returns a user friendly message summarising who won the round.
 function checkRoundWinner(playerSelection, computerSelection) {
     
-    let returnString = `You selected ${playerSelection} and the computer selected ${computerSelection}. `
+    let returnString = `You selected <span class="bold">${playerSelection}</span> and the computer selected <span class="bold">${computerSelection}</span>. `
 
     //check each combination of player selections to check if they have won, otherwise return lose - add wins to UI
     if (playerSelection === 'rock' && computerSelection === 'scissors'
@@ -58,7 +58,7 @@ function playRound() {
     roundContainer.innerText = `Round: ${roundCount}`
     
     //get the user selection from the button they selected and call computerPlay which generates the computers move
-    let playerSelection = this.textContent.toLowerCase();
+    let playerSelection = this.getAttribute('data-user-selection');
     let computerSelection = computerPlay();
 
     //call function to check who won the round and get results to display to user then present in UI

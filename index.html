@@ -2,19 +2,20 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    <!--font awesone-->
+    <script src="https://kit.fontawesome.com/ad4f7e546e.js" crossorigin="anonymous"></script>
+
+    <!--below are for tick addin-->
     <link rel="stylesheet" href="flip/dist/flip.min.css" />
     <script src="flip/dist/flip.min.js"></script>
 </head>
 
 <body>
-    <div class="controls">
-        <h1>Make your move.</h1>
-        <div class="btn-group">
-            <button class="selection">Rock</button>
-            <button class="selection">Paper</button>
-            <button class="selection">Scissors</button>
+    <div class="round">
+            <h1 class="round-number" id="round-number"></h1>
+            <p id="round-result-field"></p>
         </div>
-    </div>
+    
 
    
 
@@ -25,7 +26,12 @@
                 <span data-view="flip"></span>
             </div>
         </div>
-        <h1 class="round-number" id="round-number"></h1>
+        <div class="btn-group">
+            <button class="selection" data-user-selection="rock"><i class="fa-regular fa-hand-back-fist"></i></button>
+            <button class="selection" data-user-selection="paper"><i class="fa-regular fa-hand"></i></button>
+            <button class="selection" data-user-selection="scissors"><i class="fa-regular fa-hand-scissors"></i></button>
+        </div>
+
         <div class="score-container">
             <h3>Computer score:</h3>
             <div class="tick" id="computer-score"data-value="0" data-credits="false">
@@ -33,7 +39,7 @@
             </div>
         </div>
     </div>
-    <h2 id="round-result-field"></h2>
+   
     <h2 id="game-result-field"></h2>
     
     
