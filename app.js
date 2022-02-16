@@ -29,7 +29,7 @@ function checkRoundWinner(playerSelection, computerSelection) {
     
     let returnString = `You selected ${playerSelection} and the computer selected ${computerSelection}. `
 
-    //check each combination of player selections to check if they have won, otherwise return lose
+    //check each combination of player selections to check if they have won, otherwise return lose - add wins to UI
     if (playerSelection === 'rock' && computerSelection === 'scissors'
         || playerSelection === 'paper' && computerSelection === 'rock'
         || playerSelection === 'scissors' && computerSelection === 'paper') {
@@ -51,17 +51,22 @@ function checkRoundWinner(playerSelection, computerSelection) {
 }
 
 function playRound() {
+    
+    //set the round and apply it on the UI
+    roundCount++;
+    const roundContainer = document.getElementById('round-number');
+    roundContainer.innerText = `Round: ${roundCount}`
+    
     //get the user selection from the button they selected and call computerPlay which generates the computers move
     let playerSelection = this.textContent.toLowerCase();
     let computerSelection = computerPlay();
 
-
-   let resultText = checkRoundWinner(playerSelection, computerSelection);
-
+    //call function to check who won the round and get results to display to user then present in UI
+    let resultText = checkRoundWinner(playerSelection, computerSelection);
     const roundResults = document.getElementById('round-result-field');
     roundResults.innerHTML = resultText;
 
-    roundCount++;
+    //check the game to see if it should continue
     checkGameStatus();
 }
 

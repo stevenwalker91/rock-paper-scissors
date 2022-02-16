@@ -9,21 +9,6 @@ button {
     height: 50px;
 }
 
-
-.score {
-    background-color: black;
-    min-height: 200px;
-    min-width: 400;
-    display: flex;
-    color: red;
-    justify-content: center;
-    align-items: center;
-    font: 120px sans-serif;
-    flex-grow: 1;
-    
-    
-}
-
 .scoreboard {
     display: flex;
     justify-content: space-around;
@@ -39,4 +24,9 @@ button {
 
 .tick {
     font-size: 125px;
+}
+
+.round-number {
+    align-items: center;
+    display: flex;
 }
