@@ -84,11 +84,11 @@ function gameResults(playerScore, computerScore) {
     let result = '';
 
     if (playerScore === computerScore) {
-        result = `It was a draw! Why not try again? The score was Player: ${playerScore} - Computer: ${computerScore}`;
+        result = `It was a draw! Why not try again?`;
     } else if (playerScore > computerScore) {
-        result  = `You won! Well done! The score was Player: ${playerScore} - Computer: ${computerScore}`;
+        result  = `You won! Well done!`;
     } else {
-        result  = `Oooh sorry, you lost. The score was Player: ${playerScore} - Computer: ${computerScore}`;
+        result  = `Oooh sorry, you lost.`;
     }
 
     //clear down the scores for the next game

@@ -1,6 +1,9 @@
 body {
     text-align: center;
     font-family: sans-serif;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -10,7 +13,8 @@ button {
     border: none;
     border-radius: 10px;
     background-color:rgb(114, 111, 111);
-    color: white;;
+    color: white;
+
 }
 
 button:hover {
@@ -31,6 +35,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+ 
 }
 
 .btn-group {
@@ -38,10 +43,15 @@ button:hover {
     align-items: center; 
     justify-content: space-around;   
     flex-grow: 1;
+    gap: 5px;
+
+    
 }
 
 .tick {
     font-size: 125px;
+    display: flex;
+  
 }
 
 
@@ -49,11 +59,6 @@ h3 {
     margin-left: 12px;
 }
 
-@media screen and (max-width: 883px) {
-    .scoreboard {
-      flex-direction: column;
-    }   
-  }
 
   .bold {
       font-weight: bold;
@@ -62,4 +67,8 @@ h3 {
 
   .fa-regular {
       font-size: 75px;
+  }
+
+  #game-result-field {
+      margin-top: 30px;
   }
